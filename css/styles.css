@@ -1,0 +1,12 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.text-center {
+    text-align: center;    
+}
+
+.hidden {
+    display: none;
+}

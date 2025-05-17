@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TK's Bio</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/bio.css" />
+  <link rel="stylesheet" href="./css/search.css" />
+</head>
+
+<body>
+
+  <h1 class="text-center">TK's Bio</h1>
+  <input type="text" id="search" placeholder="ค้นหา..." onkeyup="filterBios()" />
+  <div id="bios"></div>
+  <script src="./js/bio-data.js"></script>
+  <script src="./js/filter-bio-data.js"></script>
+  <script>
+    const bio = document.getElementById('bios');
+
+    for (const bioItem of bios) {
+      const bioGroup      = document.createElement('div');
+      bioGroup.className  = 'bio-group';
+      bioGroup.setAttribute('data-bio-group', bioItem.topic);
+
+      const heading       = document.createElement('h2');
+      heading.textContent = bioItem.topic;
+      bioGroup.appendChild(heading);
+      for (const hotel of bioItem.hotels) {
+        const bioGroupItem     = document.createElement('div');
+        bioGroupItem.className = 'bio-group-item';
+        bioGroupItem.setAttribute('data-search-term', hotel.name);
+        bioGroupItem.setAttribute('data-bio-group', bioItem.topic);
+
+        const bioGroupItemLink       = document.createElement('a');
+        bioGroupItemLink.href        = hotel.url;
+        bioGroupItemLink.target      = '_blank';
+        bioGroupItemLink.textContent = hotel.name;
+
+        bioGroupItem.appendChild(bioGroupItemLink);
+        bioGroup.appendChild(bioGroupItem);
+      }
+
+      bio.appendChild(bioGroup);
+    }
+  </script>
+
+</body>
+
+</html>
